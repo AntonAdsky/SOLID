@@ -3,10 +3,18 @@ package components.figures;
 import interfaces.Figure;
 import interfaces.AbstractFactory;
 
+import java.util.ArrayList;
+
 public class FigureFactory implements AbstractFactory<Figure> {
 
-    public static final String rectangle = "Rectangle";
-    public static final String square = "Square";
+    public static final String rectangle = new Rectangle().getTitle();
+    public static final String square = new Square().getTitle();
+    public static ArrayList<String> figures = new ArrayList<>();
+
+    public FigureFactory() {
+        figures.add(rectangle);
+        figures.add(square);
+    }
 
     @Override
     public Figure create(String type) {
@@ -19,17 +27,19 @@ public class FigureFactory implements AbstractFactory<Figure> {
         return null;
     }
 
-//    public Figure create(String figureType, int[] data) {
-//        if (rectangle.equalsIgnoreCase(figureType)) {
-//            if(data.length == 2)
-//                return new Rectangle(data[0], data[1]);
-//        } else if (square.equalsIgnoreCase(figureType)) {
-//            if(data.length == 1)
-//                return new Square(data[0]);
-//        }
-//
-//        return null;
-//    }
+    @Override
+    public Figure getRandom() {
+        int rnd = (int) Math.round(Math.random() * (figures.size() - 1));
+        String randomFigureType = figures.get(rnd);
+        Figure randomFigure = create(randomFigureType);
 
+        if (randomFigureType.equalsIgnoreCase(rectangle)) {
+            randomFigure.setData(new int[]{(int) (Math.random() * 100), (int) (Math.random() * 100)});
+        } else {
+            randomFigure.setData(new int[]{(int) (Math.random() * 100)});
+        }
+
+        return randomFigure;
+    }
 
 }

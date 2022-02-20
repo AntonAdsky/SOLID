@@ -3,7 +3,7 @@ package components.colors;
 import interfaces.Color;
 
 public class Black implements Color {
-    String color = "Black";
+    private final String color = "Black";
 
     @Override
     public String getColor() {

@@ -3,8 +3,13 @@ package components.figures;
 import interfaces.Figure;
 
 public class Rectangle implements Figure {
-    int height;
-    int weight;
+    private String title = "Rectangle";
+    private int height;
+    private int weight;
+
+    public String getTitle() {
+        return title;
+    }
 
     @Override
     public void setData(int[] data) {
