@@ -2,8 +2,8 @@ package components.colors;
 
 import interfaces.Color;
 
-public class White implements Color {
-    private final String color = "White";
+public class Brown implements Color {
+    private final String color = "Brown";
 
     @Override
     public String getColor() {

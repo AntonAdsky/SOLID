@@ -3,7 +3,12 @@ package components.figures;
 import interfaces.Figure;
 
 public class Square implements Figure {
+    private final String title = "Square";
     private int side;
+
+    public String getTitle() {
+        return title;
+    }
 
     @Override
     public void setData(int[] data) {
